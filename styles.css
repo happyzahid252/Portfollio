@@ -1,0 +1,492 @@
+:root {
+    --background-color: #000000;
+    --text-color: #dfffdf;
+    --highlight-color: gold;
+    --sidebar-bg-color: #333333;
+}
+.overlay.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.hero-content .left-container h1 {
+    font-size: clamp(2rem, 8vw, 5.5rem); /* Scales based on viewport width */
+}
+
+html {
+    scroll-behavior: smooth;
+    /* Enables smooth scrolling */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+nav {
+    height: 90px;
+    width: 100%;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo img {
+    width: 150px;
+    height: auto;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin-right: 30px;
+}
+
+.nav-links ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    position: relative;
+    /* Position for pseudo-element */
+}
+
+.nav-links ul li a:hover {
+    color: var(--highlight-color);
+    transition: color 0.7s ease;
+}
+
+.nav-links ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    /* Thickness of the line */
+    background: var(--highlight-color);
+    /* Line color */
+    transition: width 0.3s ease;
+    /* Smooth animation */
+}
+
+.nav-links ul li a:hover::after {
+    width: 100%;
+    /* Expand the line on hover */
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger i {
+    font-size: 24px;
+    color: var(--text-color);
+}
+
+/* Left Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    /* Initially hidden */
+    height: 100vh;
+    width: 80%;
+    background-color: var(--sidebar-bg-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s ease;
+    z-index: 20;
+}
+
+.sidebar.active {
+    left: 0;
+    /* Slide into view */
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+    position: relative;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 18px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+    background: var(--highlight-color);
+    color: var(--background-color);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    /* Hidden by default */
+    z-index: 15;
+}
+
+.overlay.active {
+    display: block;
+    /* Shown when sidebar is active */
+}
+
+/* Media Query for Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        /* Hide the nav links in navbar */
+    }
+
+    .hamburger {
+        display: block;
+        /* Show hamburger */
+    }
+}
+
+header {
+    height: 100vh;
+    background-image: url('images/header-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 0 50px;
+}
+
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-color);
+    width: 100%;
+}
+
+.hero-content .left-container {
+    flex: 1;
+    margin-right: 20px;
+    margin-bottom: 150px;
+}
+
+.hero-content .left-container h1 {
+    font-size: 5.5rem;
+    margin-bottom: 20px;
+}
+
+.hero-content .left-container p {
+    font-size: 1.2rem;
+    margin-bottom: 2px;
+    margin-left: 10px;
+}
+
+.hero-content .right-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-content .right-container img {
+    width: 380px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 0 80px var(--highlight-color);
+    margin-bottom: 100px;
+}
+
+@media (max-width: 1040px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        position: relative;
+    }
+
+    .hero-content .right-container img {
+        display: none;
+    }
+}
+
+@media (max-width: 930px) {
+    header {
+        padding: 0 20px;
+    }
+
+    .hero-content .left-container h1 {
+        font-size: 4rem;
+    }
+
+    .hero-content .left-container p {
+        font-size: 1rem;
+    }
+
+    .search-nav {
+        display: none;
+    }
+
+    .left-container h1 {
+        font-size: 3.5rem;
+    }
+}
+.get-in-quote button {
+    padding: 10px 20px;
+    background: var(--highlight-color);
+    color: var(--background-color);
+    border: 2px solid var(--highlight-color);
+    border-radius: 15px;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    cursor: pointer;
+    font-family: fantasy;
+    margin-left: 10px;
+    transition: all 0.3s ease;    /* Smooth transition for all properties */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);   /* Subtle shadow for depth */
+}
+.get-in-quote button:hover {
+    background: var(--background-color);
+    color: var(--text-color);
+    transform: translateY(-3px);/* Button rises slightly */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);   /* Enhanced shadow on hover */
+}
+/* About Section */
+.about-home {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background-color);
+    padding: 50px 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    margin: 20px;
+    /* Set margin to 0 as requested */
+}
+.left-image-about img {
+    max-width: 400px;
+    height: auto;
+    border-radius: 50px;
+    box-shadow: 0 0 80px 15px rgba(255, 215, 0, 0.8);
+    /* Increased golden shadow */
+    transition: all 0.7s ease;
+    margin-left: 50px;
+}
+.left-image-about img:hover {
+    transform: scale(1.1);   /* Image zoom effect on hover */
+}
+.right-main-about-content {
+    flex: 1;
+    margin-left: 0;
+    /* Remove margin */
+    max-width: 600px;
+    color: var(--text-color);
+}
+.right-main-about-content h1 {
+    font-size: 4rem;
+    /* Very large heading */
+    color: var(--highlight-color);
+    margin-bottom: 20px;
+    color: #dfffdf;
+    position: relative;
+    right: 80px;
+    font-weight: bold;
+}
+.right-main-about-content p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    position: relative;
+    right: 80px;
+}
+.more-about-btn {
+    padding: 10px 25px;
+    background: var(--highlight-color);
+    color: var(--background-color);
+    border: 2px solid var(--highlight-color);
+    border-radius: 15px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-family: fantasy;
+    margin-top: 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+    right: 80px;
+}
+.more-about-btn:hover {
+    background: var(--background-color);
+    color: var(--text-color);
+    transform: translateY(-3px);   /* Button rises slightly */
+    transition: 0.5s;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);    /* Enhanced shadow on hover */
+}
+@media (max-width: 768px) {
+    .about-home {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+    }
+
+    .left-image-about img {
+        display: none;
+    }
+
+    .right-main-about-content {
+        position: relative;
+        left: 80px;
+        bottom: 100px;
+    }
+
+    .right-main-about-content p {
+        font-size: 1rem;
+    }
+}
+.card-services {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: black;
+    flex-wrap: wrap;
+    padding: 30px 10px;
+}
+.head-card h1 {
+    color: #dfffdf;
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+.cards {
+    position: relative;
+    top: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.card-one, .card-two, .card-third {
+    background-color: gold;
+    width: 28%;
+    padding: 20px;
+    text-align: center;
+    height: 300px;
+    border-radius: 20px;
+    font-family: fantasy;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+.card-one:hover, 
+.card-two:hover, 
+.card-third:hover {
+    background: var(--background-color);
+    color: var(--text-color); /* Retaining your specified colors */
+    transform: translateY(-5px) scale(1.05); /* Slight rise and scale */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4), 0 6px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+    border: 2px solid gold; /* Retaining the gold border */
+}
+.card-one:hover::after, 
+.card-two:hover::after, 
+.card-third:hover::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.6); /* Glow effect with gold color */
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    z-index: -1;
+}
+.card-one:hover::after, 
+.card-two:hover::after, 
+.card-third:hover::after {
+    opacity: 1;
+}
+.card-one p,
+.card-two p,
+.card-third p {
+    font-size: 1rem;
+    margin-top: 10px;
+    font-family: 'Times New Roman';
+    font-weight: bold;
+    line-height: 20px;
+}
+
+/* Responsive styling for smaller screens */
+@media (max-width: 1024px) {
+    .card-one, .card-two, .card-third {
+        width: 45%; /* Adjusting width for medium screens */
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .card-one, .card-two, .card-third {
+        width: 100%; /* Cards stack to 100% width (one per line) for smaller screens */
+        margin-bottom: 20px; /* Adding space between stacked cards */
+    }
+}
+
+/* Enhancing the hover with subtle shadow movements */
+@keyframes card-hover {
+    0% {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    50% {
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4), 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
+    100% {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.card-one:hover,
+.card-two:hover,
+.card-third:hover {
+    animation: card-hover 0.8s ease-in-out infinite;
+}
+
+
+
+
+
+
+
+
+
+
