@@ -8,7 +8,7 @@ overlay.className = 'overlay';
 
 // Add sidebar links
 sidebar.innerHTML = `
-    <img src="./IMAGES/arsalan.png" style="width:150px;height: 150px;border-radius: 50%; margin: 20px auto; display: block;">
+    <img src="./arsalan.png" style="width:150px;height: 150px;border-radius: 50%; margin: 20px auto; display: block;">
     <ul>
         <li><a href="#">Home</a></li>
         <li><a href="#">Services</a></li>
